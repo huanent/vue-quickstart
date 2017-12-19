@@ -48,14 +48,12 @@ export default new Vuex.Store({
                 var tab = state.tabs.find(f => f.index == index)
                 if (!tab) {
                     let menu = state.menu.find(f => f.index == index)
-                    var name = '../components/AdminHome/UserManager.vue';
-                    var component = () => import(name+'');
 
                     state.tabs.push({
                         label: menu.name,
                         index: menu, index,
                         closable: true,
-                        component: component
+                        component: () => import(`@/${menu.componentPath}`)
                     })
                 }
             }

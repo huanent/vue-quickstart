@@ -2,16 +2,16 @@
   <div id='user-login'>
     <div>
       <div id='title'>
-        <h1>后台admin</h1>
+        <h1>系统登录</h1>
       </div>
       <div id='loginPnl'>
-          <el-form :model="loginDTO">
-            <el-form-item :prop="loginDTO.uid">
-              <el-input v-model="loginDTO.uid">
+          <el-form :model="loginDTO" :rules="loginRules" ref="loginForm">
+            <el-form-item prop="uid">
+              <el-input v-model="loginDTO.uid" >
                 <template slot="prepend">账户：</template>
               </el-input>
             </el-form-item >
-            <el-form-item :prop="loginDTO.pwd">
+            <el-form-item prop="pwd">
               <el-input type="password" v-model="loginDTO.pwd">
                 <template slot="prepend">密码：</template>
               </el-input>
@@ -35,18 +35,28 @@ export default {
       loginDTO: {
         uid: "",
         pwd: ""
+      },
+      loginRules: {
+        uid: [{ required: true, message: "请输入账户名称" }],
+        pwd: [{ required: true, message: "请输入密码" }]
       }
     };
   },
   methods: {
     login() {
-      Account.login(this.loginDTO)
-        .then(rsp => {
-          this.$router.push("AdminHome");
-        })
-        .catch(rsp => {
-          Message.error("未知错误请重试");
-        });
+      this.$refs["loginForm"].validate(valid => {
+        if (!valid) {
+          Message.error("登录信息不完整");
+          return;
+        }
+        Account.login(this.loginDTO)
+          .then(rsp => {
+            this.$router.push("AdminHome");
+          })
+          .catch(rsp => {
+            Message.error("未知错误请重试");
+          });
+      });
     }
   }
 };

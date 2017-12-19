@@ -38,19 +38,19 @@ export default {
     this.onMenuClick("adminIndex");
   },
   methods: {
-    ...mapActions({
+    ...mapActions("menu", {
       getMenu: "getMenu"
     }),
-    ...mapMutations({
+    ...mapMutations("menu", {
       onMenuClick: "onMenuClick"
     })
   },
   computed: {
-    ...mapState({
+    ...mapState("menu", {
       menu: "menu",
       activeItem: "activeItem"
     }),
-    ...mapGetters({
+    ...mapGetters("menu", {
       subMenu: "subMenu",
       groupMenu: "groupMenu",
       itemMenu: "itemMenu"

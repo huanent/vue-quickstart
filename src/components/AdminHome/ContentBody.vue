@@ -17,7 +17,7 @@ import { mapMutations, mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState({
+    ...mapState("menu", {
       tabs: "tabs",
       activeItem: "activeItem"
     })

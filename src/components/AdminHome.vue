@@ -2,6 +2,7 @@
   <div id='bg'>
     <el-container id='root-container'>
       <el-header>
+        <h1>管理系统</h1>
       </el-header>
       <el-container>
         <el-aside>
@@ -43,6 +44,10 @@ export default {
 }
 .el-header {
   background-color: #324057;
+}
+.el-header > h1 {
+  color: rgb(107, 181, 255);
+  line-height: 100%
 }
 .el-aside {
   height: 100%;

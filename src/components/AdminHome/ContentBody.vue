@@ -1,6 +1,6 @@
 <template>
   <div id='content-body'>
-      <el-tabs :value="activeItem" >
+      <el-tabs :value="activeItem" @tab-remove="closeTab">
         <el-tab-pane label="首页" name="adminIndex">
           <admin-index></admin-index>
         </el-tab-pane>
@@ -13,13 +13,18 @@
 
 <script>
 import AdminIndex from "./AdminIndex";
-import { mapMutations, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   computed: {
     ...mapState("menu", {
       tabs: "tabs",
       activeItem: "activeItem"
+    })
+  },
+  methods: {
+    ...mapActions("menu", {
+      closeTab: "closeTab"
     })
   },
   components: {

@@ -40,6 +40,9 @@ Store.registerModule('menu', {
         initMenu(state, menu) {
             state.menu = menu;
         },
+        initTabs(state, tabs) {
+            state.tabs = tabs;
+        },
         addTab(state, tab) {
             state.tabs.push(tab)
         },
@@ -69,6 +72,15 @@ Store.registerModule('menu', {
                 }
             }
             context.commit('switchTab', index)
+        },
+        closeTab(context, index) {
+            let indexNum = context.state.tabs.findIndex(f => f.index == index);
+            let activeItem = context.state.activeItem;
+            let newTabs = context.state.tabs.filter(f => f.index != index);
+            context.commit('initTabs', newTabs)
+            if (activeItem == index) {
+                context.commit('switchTab', indexNum == 0 ? "adminIndex" : newTabs[indexNum - 1].index)
+            }
         }
     }
 })

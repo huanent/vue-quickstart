@@ -11,7 +11,7 @@ export default {
                                 { name: '菜单二', sub: '导航二', group: '分组一', index: 'menu2' },
                                 { name: '菜单二', sub: '导航二', group: '分组二', index: 'menu4' },
                                 { name: '菜单三', index: 'menu3' },
-                                { name: '菜单五', group: '分组二', index: 'menu3' },
+                                { name: '菜单五', group: '分组二', index: 'menu5' },
                             ],
                             status: 200
                         })

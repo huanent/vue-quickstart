@@ -37,31 +37,38 @@ Store.registerModule('menu', {
         }
     },
     mutations: {
-        addMenu(state, menu) {
+        initMenu(state, menu) {
             state.menu = menu;
         },
-        onMenuClick(state, index) {
-            if (index != "adminIndex") {
-                var tab = state.tabs.find(f => f.index == index)
-                if (!tab) {
-                    let menu = state.menu.find(f => f.index == index)
-                    let component = () => import(`@/${menu.componentPath ? menu.componentPath : 'components/AdminHome/NotFound.vue'}`)
-                    state.tabs.push({
-                        label: menu.name,
-                        index: menu, index,
-                        closable: true,
-                        component: component
-                    })
-                }
-            }
-            state.activeItem = index;
+        addTab(state, tab) {
+            state.tabs.push(tab)
+        },
+        switchTab(state, nowIndex) {
+            state.activeItem = nowIndex
         }
     },
     actions: {
         getMenu(context) {
             MenuApi.getMenu().then(rsp => {
-                context.commit('addMenu', rsp.data);
+                context.commit('initMenu', rsp.data);
             });
+        },
+        clickMenuItem(context, index) {
+            if (index != "adminIndex") {
+                var tab = context.state.tabs.find(f => f.index == index)
+                if (!tab) {
+                    let menu = context.state.menu.find(f => f.index == index)
+                    let component = () => import(`@/${menu.componentPath ? menu.componentPath : 'components/AdminHome/NotFound.vue'}`)
+                    var newTab = {
+                        label: menu.name,
+                        index: menu, index,
+                        closable: true,
+                        component: component
+                    }
+                    context.commit('addTab', newTab)
+                }
+            }
+            context.commit('switchTab', index)
         }
     }
 })

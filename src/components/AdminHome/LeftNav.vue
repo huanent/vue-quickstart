@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active='activeItem' @select='onMenuClick'>
+  <el-menu :default-active='activeItem' @select='clickMenuItem'>
     <el-menu-item key="adminIndex" index="adminIndex" >
       <h2>首页</h2>
     </el-menu-item>
@@ -30,19 +30,17 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   mounted() {
     this.getMenu();
-    this.onMenuClick("adminIndex");
+    this.clickMenuItem("adminIndex");
   },
   methods: {
     ...mapActions("menu", {
-      getMenu: "getMenu"
-    }),
-    ...mapMutations("menu", {
-      onMenuClick: "onMenuClick"
+      getMenu: "getMenu",
+      clickMenuItem: "clickMenuItem"
     })
   },
   computed: {

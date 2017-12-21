@@ -49,6 +49,7 @@ export default {
           Message.error("登录信息不完整");
           return;
         }
+
         Account.login(this.loginDTO)
           .then(rsp => {
             this.$router.push("AdminHome");

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import IsLoading from '@/components/IsLoading'
 
 Vue.use(Router)
 
@@ -8,11 +9,11 @@ export default new Router({
     {
       path: '/',
       name: 'UserLogin',
-      component: () => import('../components/UserLogin.vue')
+      component: () => import('@/components//UserLogin')
     }, {
       path: '/adminhome',
       name: 'AdminHome',
-      component: () => import('../components/AdminHome.vue')
+      component: () => import('@/components//AdminHome')
     }
   ]
 })

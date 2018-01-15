@@ -7,7 +7,7 @@
       <div id='loginPnl'>
           <el-form :model="loginDTO" :rules="loginRules" ref="loginForm">
             <el-form-item prop="uid">
-              <el-input v-model="loginDTO.uid" >
+              <el-input v-model="loginDTO.uid">
                 <template slot="prepend">账户：</template>
               </el-input>
             </el-form-item >
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Account from "../api/Account";
+import Account from "@/api/Account";
 import { Message } from "element-ui";
 
 export default {

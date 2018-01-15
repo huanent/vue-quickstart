@@ -1,5 +1,6 @@
-import Store from './store'
-import MenuApi from '../api/Menu'
+import Store from '@/store/store'
+import MenuApi from '@/api/Menu'
+import IsLoading from '@/components/IsLoading'
 
 Store.registerModule('menu', {
     namespaced: true,
@@ -61,13 +62,15 @@ Store.registerModule('menu', {
                 var tab = context.state.tabs.find(f => f.index == index)
                 if (!tab) {
                     let menu = context.state.menu.find(f => f.index == index)
-                    let component = () => import(`@/${menu.componentPath ? menu.componentPath : 'components/AdminHome/NotFound.vue'}`)
+                    let component =import(`@/${menu.componentPath ? menu.componentPath : 'components/NotFound.vue'}`)
+                    
                     var newTab = {
                         label: menu.name,
-                        index: menu, index,
+                        index: menu.index,
                         closable: true,
-                        component: component
+                        component:menu.componentPath
                     }
+
                     context.commit('addTab', newTab)
                 }
             }

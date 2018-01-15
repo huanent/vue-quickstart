@@ -5,15 +5,16 @@
           <admin-index></admin-index>
         </el-tab-pane>
            <el-tab-pane v-for="item in tabs" :label="item.label" :key="item.index" :name="item.index"  :closable="item.closable">
-               <component :is='item.component'></component>
+               <async-component :componentPath='item.component' :delay="500"></async-component>
           </el-tab-pane>
       </el-tabs>
   </div>
 </template>
 
 <script>
-import AdminIndex from "./AdminIndex";
+import AdminIndex from "@/components/AdminIndex";
 import { mapActions, mapState } from "vuex";
+import AsyncComponent from "@/components/AsyncComponent";
 
 export default {
   computed: {
@@ -28,11 +29,9 @@ export default {
     })
   },
   components: {
-    AdminIndex
+    AdminIndex,
+    AsyncComponent
   }
 };
 </script>
 
-<style scoped>
-
-</style>

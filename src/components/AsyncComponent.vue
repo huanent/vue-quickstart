@@ -1,7 +1,7 @@
 <template>
     <div>
       <is-loading v-if='isLoading'></is-loading>
-      <loading-error v-if='isError' @reload='load'></loading-error>
+      <loading-error v-if='isError' @reload='load' :errorDetails='errorDetails'></loading-error>
       <component :is="nowComponent" v-if='!isLoading&&!isError'></component>
     </div>
 </template>
@@ -14,7 +14,8 @@ export default {
     return {
       nowComponent: null,
       isLoading: true,
-      isError: false
+      isError: false,
+      errorDetails: ""
     };
   },
   props: {
@@ -42,6 +43,7 @@ export default {
           this.nowComponent = LoadingError;
           this.isError = true;
           this.isLoading = false;
+          this.errorDetails = err.message;
         });
     }
   }

@@ -34,4 +34,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+#content-body {
+  height: 100%;
+}
+</style>
+
 

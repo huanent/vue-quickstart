@@ -2,7 +2,7 @@
   <div id='bg'>
     <el-container id='root-container'>
       <el-header>
-        <h1>管理系统</h1>
+        <top-bar></top-bar>
       </el-header>
       <el-container>
         <el-aside>
@@ -17,12 +17,14 @@
 </template>
 
 <script>
-import LeftNav from "./AdminHome/LeftNav";
-import ConentBody from "./AdminHome/ContentBody";
+import LeftNav from "@/components/AdminHome/LeftNav";
+import ConentBody from "@/components/AdminHome/ContentBody";
+import TopBar from "@/components/AdminHome/TopBar";
 export default {
   components: {
     LeftNav,
-    ConentBody
+    ConentBody,
+    TopBar
   }
 };
 </script>
@@ -44,10 +46,6 @@ export default {
 }
 .el-header {
   background-color: #324057;
-}
-.el-header > h1 {
-  color: rgb(107, 181, 255);
-  line-height: 100%
 }
 .el-aside {
   height: 100%;

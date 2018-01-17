@@ -2,14 +2,14 @@
   <div id='bg'>
     <el-container id='root-container'>
       <el-header>
-        <top-bar></top-bar>
+        <top-bar/>
       </el-header>
       <el-container>
         <el-aside>
-           <left-nav></left-nav>
+           <left-nav/>
         </el-aside>
         <el-main>
-          <conent-body></conent-body>
+          <right-tabs/>
         </el-main>
       </el-container>
     </el-container>
@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import LeftNav from "@/components/AdminHome/LeftNav";
-import ConentBody from "@/components/AdminHome/ContentBody";
-import TopBar from "@/components/AdminHome/TopBar";
+import LeftNav from "./AdminHome/LeftNav";
+import RightTabs from "./AdminHome/RightTabs";
+import TopBar from "./AdminHome/TopBar";
 export default {
   components: {
     LeftNav,
-    ConentBody,
+    RightTabs,
     TopBar
   }
 };
@@ -45,7 +45,7 @@ export default {
   height: 100%;
 }
 .el-header {
-  background-color: #212a38
+  background-color: #2b3749;
 }
 .el-aside {
   height: 100%;

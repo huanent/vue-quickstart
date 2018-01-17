@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import IsLoading from '@/components/IsLoading'
 
 Vue.use(Router)
 

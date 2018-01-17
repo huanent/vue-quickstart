@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import IsLoading from "@/components/IsLoading";
-import LoadingError from "@/components/LoadingError";
+import IsLoading from "./IsLoading";
+import LoadingError from "./LoadingError";
 export default {
   data() {
     return {

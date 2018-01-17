@@ -9,7 +9,7 @@
         placement="bottom"
         trigger="hover">
         <el-button type="text" class='setting-popover-item'>修改密码</el-button>
-        <el-button type="text" class='setting-popover-item'>退出</el-button>
+        <el-button type="text" class='setting-popover-item' @click="logout">退出</el-button>
       </el-popover>
       <el-button type="text" v-popover:setting-btn-popover>个人中心 <i class="el-icon-arrow-down"/></el-button>
     </div>
@@ -17,7 +17,17 @@
 </template>
 
 <script>
-export default {};
+import Router from "../../router";
+
+export default {
+  methods: {
+    logout() {
+      Router.push({
+        name: "UserLogin"
+      });
+    }
+  }
+};
 </script>
 
 <style scoped>

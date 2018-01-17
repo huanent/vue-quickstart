@@ -28,6 +28,7 @@
 <script>
 import Account from "@/api/Account";
 import { Message } from "element-ui";
+import Router from "../router";
 
 export default {
   data() {
@@ -52,7 +53,9 @@ export default {
 
         Account.login(this.loginDTO)
           .then(rsp => {
-            this.$router.push("AdminHome");
+            Router.push({
+              name:'AdminHome'
+            })
           })
           .catch(rsp => {
             Message.error("未知错误请重试");

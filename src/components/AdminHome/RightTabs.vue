@@ -1,5 +1,5 @@
 <template>
-   <el-tabs :value="activeItem" @tab-remove="closeTab" class='content-body'>
+   <el-tabs :value="activeItem" @tab-remove="closeTab" class='content-body' @tab-click="tabClick">
         <el-tab-pane label="首页" name="adminIndex">
           <admin-index></admin-index>
         </el-tab-pane>
@@ -11,7 +11,7 @@
 
 <script>
 import AdminIndex from "../AdminIndex";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState,mapMutations } from "vuex";
 import AsyncComponent from "../AsyncComponent";
 
 export default {
@@ -24,7 +24,13 @@ export default {
   methods: {
     ...mapActions("menu", {
       closeTab: "closeTab"
-    })
+    }),
+    ...mapMutations("menu",{
+      switchTab:"switchTab"
+    }),
+    tabClick(e){
+      this.switchTab(e.name)
+    }
   },
   components: {
     AdminIndex,
